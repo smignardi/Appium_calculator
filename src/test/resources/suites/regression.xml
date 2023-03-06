@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression suite" verbose="1" time-out="60000">
+    <groups>
+        <run>
+            <include name="Regression"/>
+        </run>
+    </groups>
+
+    <listeners>
+        <listener class-name="listeners.TestListeners"></listener>
+        <listener class-name="listeners.SuiteListeners"></listener>
+        <listener class-name="listeners.InvokeMethodListeners"/>
+    </listeners>
+
+    <test name="mainPage">
+        <packages>
+            <package name="mainPage"></package>
+        </packages>
+    </test>
+
+</suite>
