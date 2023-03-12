@@ -5,7 +5,6 @@ import element.$;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import utilities.Logs;
 
 import static element.$.LocatorType.*;
@@ -37,14 +36,13 @@ public class MainPage extends BasePage {
     @Override
     @Step("Wait Main Page to load")
     public void waitPageToLoad() {
-        Logs.debug("Wait Main Page to load");
         waitPage(moreOptions, "Main Page");
     }
 
     @Override
     @Step("Verifying main page elements are displayed")
     public void verifyPage(){
-        Logs.debug("Verifying main page elements are displayed");
+        Logs.info("Verifying main page elements are displayed");
         softAssert.assertTrue(moreOptions.isDisplayed());
         softAssert.assertTrue(degreeModeOptions.isDisplayed());
         softAssert.assertAll();
@@ -94,7 +92,7 @@ public class MainPage extends BasePage {
             lightTheme.click();
         } else if (theme.equals("Dark")) {
             darkTheme.click();
-        }else systemDefaultTheme.click();
+        }else {systemDefaultTheme.click();}
     }
 
     @Step("Clicking on Ok button")
@@ -120,7 +118,7 @@ public class MainPage extends BasePage {
     @Step("Clicking on digit")
     public void clickOnDigit(String number){
         Logs.info("Clicking on digit");
-        final By digit = new AppiumBy.ByAndroidUIAutomator(String.format("text(\"%s\")",number));
+        final var digit = new AppiumBy.ByAndroidUIAutomator(String.format("text(\"%s\")",number));
         driver.findElement(digit).click();
     }
 
@@ -153,8 +151,8 @@ public class MainPage extends BasePage {
     @Step("Input number")
     public void inputNumber(String number){
         Logs.info(String.format("Input number: %s",number));
-        char[] arrayDigits = number.toCharArray();
-        for(int x=0;x<arrayDigits.length;x++){
+        final var arrayDigits = number.toCharArray();
+        for(var x=0;x<arrayDigits.length;x++){
             formulaInput.sendKeys(String.valueOf(arrayDigits[x]));
         }
     }

@@ -60,7 +60,7 @@ public class MainPageTests extends BaseTest {
         final var number2 = faker.number().randomDouble(2,50,325);
         mainPage.inputNumber(String.valueOf(number2));
         mainPage.clickOnEquals();
-        var result = number1*number2;
+        final var result = number1*number2;
         mainPage.verifyResult(Double.toString(result));
     }
 
